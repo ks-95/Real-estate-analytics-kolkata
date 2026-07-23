@@ -29,6 +29,7 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
 
 ## 📁 Repository Structure
 
+```text
 .
 ├── scripts/
 │   ├── scraper.py
@@ -47,6 +48,7 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
 ├── .gitignore
 ├── .env
 └── README.md
+```
 
 ## 🚀 Getting Started
 
