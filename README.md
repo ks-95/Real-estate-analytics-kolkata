@@ -64,8 +64,8 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
 ### Installation & Execution
 
 1. Clone the repository:
-   git clone https://github.com/YOUR_USERNAME/real-estate-data-pipeline.git
-   cd real-estate-data-pipeline
+   git clone https://github.com/ks-95/Real-estate-analytics-kolkata.git
+   cd Real-estate-analytics-kolkata
 
 2. Configure Environment Variables:
    Create a .env file in the root directory:
