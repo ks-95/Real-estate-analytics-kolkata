@@ -12,11 +12,10 @@ def auto_scroll_and_scrape(url, max_scrolls=10):
     all_cards_data = []
 
     with sync_playwright() as p:
-        # Launch browser (headless=True means no visible UI window)
         browser = p.chromium.launch(headless=True, args=[
             "--no-sandbox",
             "--disable-setuid-sandbox",
-            "--disable-dev-shm-usage",  # Crucial for Docker (uses /tmp instead of small /dev/shm)
+            "--disable-dev-shm-usage",  
             "--disable-gpu",
             "--disable-software-rasterizer",
         ])
@@ -27,17 +26,15 @@ def auto_scroll_and_scrape(url, max_scrolls=10):
         print("Navigating to page...")
         page.goto(url, timeout=60000)
 
-        # Perform incremental scrolling to trigger dynamic loading
         for scroll_count in range(max_scrolls):
             print(f"Scrolling down... (Scroll {scroll_count + 1}/{max_scrolls})")
             
-            # Scroll to bottom
             page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
             
-            # Wait for dynamic content to fetch and render
+            
             time.sleep(3)
 
-        # Get final HTML content after scrolling
+        
         content = page.content()
         browser.close()
     soup = BeautifulSoup(content, 'html.parser')
@@ -58,8 +55,6 @@ def auto_scroll_and_scrape(url, max_scrolls=10):
             "price_per_sqft": price_per_sqft,
             "carpet_area": carpet_area,
         }
-        # json.dumps(dictionary, indent=4)
-        # print(dictionary)
         all_cards_data.append(dictionary)
 
     return all_cards_data

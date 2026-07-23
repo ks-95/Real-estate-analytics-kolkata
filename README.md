@@ -108,3 +108,9 @@ The pipeline executes a Medallion Architecture data flow:
    ```
 
 Once complete, the pipeline will process all bronze files, clean and aggregate them, write to PostgreSQL (`Data saved to Postgres db`), and exit cleanly (`code 0`).
+## 📊 Power BI Dashboard
+
+![Power BI Real Estate Dashboard](docs/dashboard.png)
+
+* **Market Analytics:** Visualizes property price distribution, price per sq. ft. across sectors in Kolkata, and unit availability by BHK type.
+* **Direct Connection:** Connected directly to the **PostgreSQL Gold Layer** for automated reporting.
