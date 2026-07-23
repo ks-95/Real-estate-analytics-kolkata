@@ -54,24 +54,32 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
 
 ### Prerequisites
 
-* Docker Desktop installed and running.
-* Git installed on your local machine.
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+* [Git](https://git-scm.com/) installed on your local machine.
 
 ### Installation & Execution
 
-1. Clone the repository:
+1. **Clone the repository:**
+   ```bash
    git clone https://github.com/ks-95/Real-estate-analytics-kolkata.git
    cd Real-estate-analytics-kolkata
+   ```
 
-2. Configure Environment Variables:
-   Create a .env file in the root directory:
+2. **Configure Environment Variables:**
+   Create a `.env` file in the root directory:
+   ```env
    POSTGRES_USER=postgres
    POSTGRES_PASSWORD=postgres
    POSTGRES_DB=real_estate_db
    POSTGRES_HOST=real_estate_postgres
    POSTGRES_PORT=5432
+   ```
 
-3. Build and Run with Docker Compose:
+3. **Build and Run with Docker Compose:**
+   ```bash
    docker-compose up --build
+   ```
+
+Once complete, the pipeline will process all bronze files, clean and aggregate them, write to PostgreSQL (`Data saved to Postgres db`), and exit cleanly (`code 0`).
 
 Once complete, the pipeline will process all bronze files, clean and aggregate them, write to PostgreSQL ("Data saved to Postgres db"), and exit cleanly (code 0).
