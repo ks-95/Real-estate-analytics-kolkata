@@ -8,16 +8,7 @@ An end-to-end automated data pipeline that scrapes, cleans, transforms, and load
 
 The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold) to process scraped property listings across multiple categories (1 BHK, 2 BHK, 3 BHK):
 
-┌────────────────┐     ┌────────────────┐     ┌────────────────┐     ┌────────────────┐
-│  Raw Scrapers  │ ──> │ Bronze Layer   │ ──> │ Silver Layer   │ ──> │ Gold Layer     │
-│  (JSON Data)   │     │ (Raw Storage)  │     │ (Cleaned/Typed)│     │ (Aggregated)   │
-└────────────────┘     └────────────────┘     └────────────────┘     └────────────────┘
-                                                                             │
-                                                                             ▼
-                                                                    ┌────────────────┐
-                                                                    │   PostgreSQL   │
-                                                                    │   Database     │
-                                                                    └────────────────┘
+
 
 ### Data Pipeline Stages
 * **Bronze Layer:** Ingests raw JSON output directly from web scrapers across 1 BHK, 2 BHK, and 3 BHK directories.
