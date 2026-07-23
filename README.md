@@ -43,8 +43,6 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
 ├── requirements.txt        # Python dependencies
 └── README.md
 
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
