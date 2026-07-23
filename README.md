@@ -29,17 +29,23 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
 
 ## 📁 Repository Structure
 
+.
 ├── scripts/
-│   ├── scraper.py          # Data extraction scripts
-│   ├── silver_transform.py # Data cleaning and transformation pipeline
-│   └── gold_load.py        # Database loader script
+│   ├── scraper.py
+│   ├── silver_transform.py
+│   └── gold_load.py
 ├── data/
-│   ├── bronze/             # Raw scraped JSON files (1BHK, 2BHK, 3BHK)
-│   ├── silver/             # Cleaned intermediate files
-│   └── gold/               # Analytics-ready data
-├── docker-compose.yml      # Multi-container orchestration
-├── Dockerfile              # Python environment definition
-├── requirements.txt        # Python dependencies
+│   ├── bronze/
+│   │   ├── one_bhk_data/
+│   │   ├── two_bhk_data/
+│   │   └── three_bhk_data/
+│   ├── silver/
+│   └── gold/
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+├── .gitignore
+├── .env
 └── README.md
 
 ## 🚀 Getting Started
