@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 import os
 
 
-# Ensure console output uses UTF-8 on Windows so the rupee symbol prints correctly.
 try:
     sys.stdout.reconfigure(encoding="utf-8")
 except AttributeError:
@@ -17,7 +16,7 @@ except AttributeError:
 load_dotenv()
 db_user = os.getenv("DB_USER", "postgres")
 db_password = os.getenv("DB_PASSWORD", "new_password")
-db_host = os.getenv("DB_HOST", "localhost")  # Overridden to 'postgres_db' inside Docker
+db_host = os.getenv("DB_HOST", "localhost")  
 db_port = os.getenv("DB_PORT", "5432")
 db_name = os.getenv("DB_NAME", "real_estate_db")
 
@@ -44,10 +43,10 @@ for key, path in bronze_paths.items():
             f"Ensure the scrapers executed and generated data before running silver_transform."
         )
     
-    # default parameter prevents ValueError if sequence is empty, though checked above
+    
     latest_files[key] = max(json_files, key=lambda f: f.stat().st_mtime)
 
-# Unpack for direct use if needed:
+
 latest_file_1bhk = latest_files["1BHK"]
 latest_file_2bhk = latest_files["2BHK"]
 latest_file_3bhk = latest_files["3BHK"]
