@@ -1,0 +1,42 @@
+
+services:
+  # Database Service
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: real_estate_postgres
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-new_password}
+      POSTGRES_DB: ${DB_NAME:-real_estate_db}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-real_estate_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Python ETL Pipeline Service
+  pipeline_runner:
+    build: .
+    container_name: python_real_estate_pipeline
+    shm_size: '2gb'
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      # Override DB_HOST inside the container network to point to the database container
+      - DB_HOST=postgres_db
+    volumes:
+      # Map host folder : container path
+      - C:\Users\KANAK\scraping\data:/app/data
+
+volumes:
+  postgres_data:

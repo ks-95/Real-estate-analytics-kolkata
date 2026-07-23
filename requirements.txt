@@ -1,0 +1,10 @@
+pandas
+numpy
+pyarrow
+fastparquet
+sqlalchemy
+psycopg2-binary
+requests
+beautifulsoup4
+playwright
+python-dotenv

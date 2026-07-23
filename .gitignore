@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environment and sensitive configuration
+.env
+*.env
+venv/
+.venv/
+
+# Data files (Exclude large JSON datasets and database files)
+data/bronze/
+data/silver/
+data/gold/
+*.json
+*.csv
+*.db
+*.sqlite
+
+# IDE & OS configuration
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
