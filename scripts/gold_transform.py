@@ -58,10 +58,9 @@ def extract_area(text):
     return cleaned
 
 
-# Choices
+
 sectors = ['IT Sector', 'North Kolkata', 'South Kolkata', 'Central Kolkata', 'Howrah']
 
-# Apply CASE WHEN equivalent
 
 df['bhk'] = df['title'].str.extract(r'(\d+)\s*BHK', flags=re.IGNORECASE, expand=False)
 #df['area'] = df['title'].str.extract(r',\s*([^,]+)\s*,\s*kolkata', flags=re.IGNORECASE, expand=False).fillna('')
