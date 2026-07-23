@@ -6,15 +6,42 @@ An end-to-end automated data pipeline that scrapes, cleans, transforms, and load
 
 ## 🏗️ Architecture Overview
 
-The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold) to process scraped property listings across multiple categories (1 BHK, 2 BHK, 3 BHK):
+The pipeline executes a Medallion Architecture data flow:
 
-
+```text
+┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐
+│  1 BHK Scraper  │   │  2 BHK Scraper  │   │  3 BHK Scraper  │
+└────────┬────────┘   └────────┬────────┘   └────────┬────────┘
+         │                     │                     │
+         └─────────────────────┼─────────────────────┘
+                               │
+                               ▼
+                      ┌─────────────────┐
+                      │  Bronze Layer   │
+                      └────────┬────────┘
+                               │
+                               ▼
+                      ┌─────────────────┐
+                      │  Silver Layer   │
+                      └────────┬────────┘
+                               │
+                               ▼
+                      ┌─────────────────┐
+                      │   Gold Layer    │
+                      └────────┬────────┘
+                               │
+                               ▼
+                      ┌─────────────────┐
+                      │    Power BI     │
+                      └─────────────────┘
+```
 
 ### Data Pipeline Stages
-* **Bronze Layer:** Ingests raw JSON output directly from web scrapers across 1 BHK, 2 BHK, and 3 BHK directories.
-* **Silver Layer:** Validates schema, handles missing/malformed attributes, cleans raw text, and standardizes geographic regions into sectors (e.g., South Kolkata, Howrah).
-* **Gold Layer:** Consolidates multi-file listings into a single aggregated dataset (450+ records) optimized for analytical querying.
-* **Database Storage:** Persists the finalized Gold layer dataset into a PostgreSQL instance for downstream analytics and dashboards.
+* **Scrapers:** Independent scrapers collect listing data for 1 BHK, 2 BHK, and 3 BHK properties.
+* **Bronze Layer:** Stores raw ingested JSON files partitioned by category.
+* **Silver Layer:** Cleans, formats, and standardizes geographic sectors and attributes.
+* **Gold Layer:** Consolidates cleaned data into an aggregated model and persists it to PostgreSQL.
+* **Power BI:** Connects directly to PostgreSQL for dynamic analytics, pricing trends, and visualization dashboards.
 
 ---
 
