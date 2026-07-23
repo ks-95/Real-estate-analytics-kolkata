@@ -12,7 +12,7 @@ import os
 load_dotenv()
 db_user = os.getenv("DB_USER", "postgres")
 db_password = os.getenv("DB_PASSWORD", "new_password")
-db_host = os.getenv("DB_HOST", "localhost")  # Overridden to 'postgres_db' inside Docker
+db_host = os.getenv("DB_HOST", "localhost")  
 db_port = os.getenv("DB_PORT", "5432")
 db_name = os.getenv("DB_NAME", "real_estate_db")
 
