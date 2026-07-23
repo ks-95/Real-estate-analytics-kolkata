@@ -81,5 +81,3 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
    ```
 
 Once complete, the pipeline will process all bronze files, clean and aggregate them, write to PostgreSQL (`Data saved to Postgres db`), and exit cleanly (`code 0`).
-
-Once complete, the pipeline will process all bronze files, clean and aggregate them, write to PostgreSQL ("Data saved to Postgres db"), and exit cleanly (code 0).
