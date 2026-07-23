@@ -29,7 +29,6 @@ The pipeline follows the **Medallion Architecture** (Bronze ➔ Silver ➔ Gold)
 
 ## 📁 Repository Structure
 
-.
 ├── scripts/
 │   ├── scraper.py          # Data extraction scripts
 │   ├── silver_transform.py # Data cleaning and transformation pipeline
