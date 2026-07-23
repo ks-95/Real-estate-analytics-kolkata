@@ -12,11 +12,10 @@ def auto_scroll_and_scrape(url, max_scrolls=10):
     all_cards_data = []
 
     with sync_playwright() as p:
-        # Launch browser (headless=True means no visible UI window)
         browser = p.chromium.launch(headless=True, args=[
             "--no-sandbox",
             "--disable-setuid-sandbox",
-            "--disable-dev-shm-usage",  # Crucial for Docker (uses /tmp instead of small /dev/shm)
+            "--disable-dev-shm-usage",  
             "--disable-gpu",
             "--disable-software-rasterizer",
         ])
